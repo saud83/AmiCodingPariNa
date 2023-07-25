@@ -1,0 +1,26 @@
+﻿@model AmiCodePariNa.ViewModel.UserAuthentication
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Users"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    if (ViewBag.message == "No such user")
+    {
+        <p style="color: red; text-align: center;">No Such User</p>
+    }
+    @Html.ActionLink("Not Registered?", "Registration", "Users", new { area = "" })
+}

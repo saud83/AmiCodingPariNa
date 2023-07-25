@@ -1,0 +1,45 @@
+﻿@model AmiCodePariNa.ViewModel.UserRegistration
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Registration</h2>
+@using (Html.BeginForm("Registration", "Users"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Phone)
+        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Phone)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ReTypePassword)
+        @Html.TextBoxFor(m => m.ReTypePassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ReTypePassword)
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+    if (ViewBag.message == "Email Already Exists!")
+    {
+        <p style="color: red; text-align: center;">@ViewBag.message</p>
+    }
+    @Html.ActionLink("Already Registered?", "Login", "Users", new { area = "" })
+}

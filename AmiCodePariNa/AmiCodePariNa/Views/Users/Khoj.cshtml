@@ -1,0 +1,35 @@
+﻿@model AmiCodePariNa.ViewModel.KhojTheSearch
+@{
+    ViewBag.Title = "Khoj";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Khoj The Search</h2>
+
+@using (Html.BeginForm("Khoj", "Users"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.listOfNumbers)
+        @Html.TextBoxFor(m => m.listOfNumbers, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.listOfNumbers)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.findNumber)
+        @Html.TextBoxFor(m => m.findNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.findNumber)
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Khoj</button>
+
+    if (ViewBag.found != null)
+    {
+        <h2>Result: @ViewBag.found</h2>
+    }
+    else
+    {
+        <h2>Result: </h2>
+    }
+}
+
